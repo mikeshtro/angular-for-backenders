@@ -12,7 +12,12 @@
 - What is a component?
 - Single file components
 - Generate multi file component
+  - npm ng generate component pick-coffee/coffee-overview
+  - delete test
+  - update angular.json
+- Importing components
 - Standalone components vs NgModules
+- Component style scope
 
 ### Component template
 
@@ -21,10 +26,8 @@
 - Control flow @if, @for, @switch
 - Common directives
 
-### Component composition
+### Component communication
 
-- Importing components vs NgModules
-- Component style scope
 - @Input() and @Output
 - Two way data binding
 
