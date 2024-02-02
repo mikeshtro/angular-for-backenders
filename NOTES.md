@@ -59,6 +59,7 @@
 
 - State management using singleton service
 - How to use state management
+- Component provider and local state management
 
 ## Routing
 
