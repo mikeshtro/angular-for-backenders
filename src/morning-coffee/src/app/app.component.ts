@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { CoffeeType } from './coffee-type';
+import { Coffee } from './cofffee';
 import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-overview.component';
 
 @Component({
@@ -7,17 +9,23 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
   standalone: true,
   imports: [CoffeeOverviewComponent],
   template: `
-    <mcf-coffee-overview>
-      <span class="coffee">Espresso</span>
-    </mcf-coffee-overview>
-
-    <mcf-coffee-overview>
-      <span class="coffee">Doppio</span>
-    </mcf-coffee-overview>
-
-    <mcf-coffee-overview>
-      <span class="coffee">Cappucino</span>
-    </mcf-coffee-overview>
+    @for (coffee of coffees; track coffee.id) {
+      <mcf-coffee-overview>
+        <span class="coffee">
+          @switch (coffee.id) {
+            @case ('espresso') {
+              Espresso
+            }
+            @case ('doppio') {
+              Doppio
+            }
+            @case ('cappuccino') {
+              Cappuccino
+            }
+          }
+        </span>
+      </mcf-coffee-overview>
+    }
   `,
   styles: `
     .coffee {
@@ -25,4 +33,10 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
     }
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  protected readonly coffees: Coffee[] = [
+    { id: 'espresso', price: 1.25 },
+    { id: 'doppio', price: 1.75 },
+    { id: 'cappuccino', price: 2.25 },
+  ];
+}

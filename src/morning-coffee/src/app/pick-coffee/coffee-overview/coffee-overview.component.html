@@ -5,3 +5,6 @@
   <input type="number" [value]="amount" />
 </label>
 <button (click)="orderCoffee()">Give me more</button>
+@if (amount > 10) {
+  <span class="warning">Don't you think this is too much?</span>
+}
