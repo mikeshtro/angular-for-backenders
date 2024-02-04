@@ -7,12 +7,21 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
   standalone: true,
   imports: [CoffeeOverviewComponent],
   template: `
-    <h1>Hello from Angular</h1>
-    <mcf-coffee-overview />
+    <mcf-coffee-overview>
+      <span class="coffee">Espresso</span>
+    </mcf-coffee-overview>
+
+    <mcf-coffee-overview>
+      <span class="coffee">Doppio</span>
+    </mcf-coffee-overview>
+
+    <mcf-coffee-overview>
+      <span class="coffee">Cappucino</span>
+    </mcf-coffee-overview>
   `,
   styles: `
-    h1 {
-      color: red;
+    .coffee {
+      color: #12ae12;
     }
   `,
 })

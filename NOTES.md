@@ -18,6 +18,7 @@
 - Importing components
 - Standalone components vs NgModules
 - Component style scope
+- Component projection
 
 ### Component template
 
