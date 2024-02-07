@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { transformCoffeeInput } from './transform-coffee-input';
+
 @Component({
   selector: 'mcf-coffee-input',
   standalone: true,
@@ -8,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './coffee-input.component.css',
 })
 export class CoffeeInputComponent {
-  @Input() value: number | null | undefined;
+  @Input({ transform: transformCoffeeInput }) value!: number;
 
   @Output() valueChange = new EventEmitter<number>();
 

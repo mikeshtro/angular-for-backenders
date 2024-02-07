@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
 
@@ -10,5 +10,11 @@ import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
   styleUrl: './coffee-overview.component.css',
 })
 export class CoffeeOverviewComponent {
-  protected amount = 0;
+  @Input({ required: true }) amount: number | null | undefined;
+
+  @Output() amountChange = new EventEmitter<number>();
+
+  protected orderCoffee(value: number): void {
+    this.amountChange.emit(value);
+  }
 }
