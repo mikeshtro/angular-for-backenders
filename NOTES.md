@@ -25,12 +25,15 @@
 - Property binding
 - Event handling
 - Control flow @if, @for, @switch
-- Common directives
 
 ### Component communication
 
 - @Input() and @Output
 - Two way data binding
+  - npm ng generate component pick-coffee/coffee-input
+  - add inputs and outputs to coffee-input
+  - add one-way data binding
+  - change one-way data binding to two way data binding
 
 ## Pipes
 

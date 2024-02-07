@@ -1,10 +1,6 @@
 <span class="coffee">Select me, I am</span>
 <ng-content />
-<label class="label">
-  <span>Amount:</span>
-  <input type="number" [value]="amount" />
-</label>
-<button (click)="orderCoffee()">Give me more</button>
+<mcf-coffee-input [(value)]="amount" />
 @if (amount > 10) {
   <span class="warning">Don't you think this is too much?</span>
 } @else if (amount > 0) {

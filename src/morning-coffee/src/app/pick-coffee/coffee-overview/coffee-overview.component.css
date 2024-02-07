@@ -13,13 +13,6 @@
   font-weight: bold;
 }
 
-.label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
 .warning {
   color: #ff7f50;
   font-weight: bold;
