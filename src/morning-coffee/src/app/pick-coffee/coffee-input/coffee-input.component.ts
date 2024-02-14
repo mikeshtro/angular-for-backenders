@@ -1,11 +1,13 @@
+import { JsonPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { transformCoffeeInput } from './transform-coffee-input';
 
 @Component({
   selector: 'mcf-coffee-input',
   standalone: true,
-  imports: [],
+  imports: [JsonPipe, FormsModule],
   templateUrl: './coffee-input.component.html',
   styleUrl: './coffee-input.component.css',
 })
@@ -14,7 +16,7 @@ export class CoffeeInputComponent {
 
   @Output() valueChange = new EventEmitter<number>();
 
-  protected orderCoffee(): void {
-    this.valueChange.emit((this.value ?? 0) + 1);
+  protected orderCoffee(value: number): void {
+    this.valueChange.emit(value);
   }
 }

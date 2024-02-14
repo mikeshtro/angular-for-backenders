@@ -11,3 +11,7 @@
   align-items: center;
   gap: 0.25rem;
 }
+
+.ng-invalid + span {
+  color: red;
+}

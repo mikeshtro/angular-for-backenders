@@ -52,8 +52,8 @@
 ### Template driven forms
 
 - One field form
+  - add one field input to coffee-input component with validation
 - Multiple field form and submit
-- Validation
 
 ### Reactive forms
 
