@@ -34,6 +34,8 @@
   - add inputs and outputs to coffee-input
   - add one-way data binding
   - change one-way data binding to two way data binding
+- Avoiding methods in templates
+  - create method calls from template
 
 ## Pipes
 

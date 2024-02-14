@@ -11,10 +11,19 @@ import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
 })
 export class CoffeeOverviewComponent {
   @Input({ required: true }) amount: number | null | undefined;
+  @Input({ required: true }) price: number | null | undefined;
 
   @Output() amountChange = new EventEmitter<number>();
 
   protected orderCoffee(value: number): void {
     this.amountChange.emit(value);
+  }
+
+  protected getPrice(): number {
+    if (this.price == null || this.amount == null) {
+      return 0;
+    }
+
+    return this.price * this.amount;
   }
 }

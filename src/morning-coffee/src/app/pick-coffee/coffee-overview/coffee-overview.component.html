@@ -1,5 +1,6 @@
 <span class="coffee">Select me, I am</span>
 <ng-content />
+<span>Price: {{ getPrice() }}</span>
 <mcf-coffee-input [value]="amount" (valueChange)="orderCoffee($event)" />
 @if (amount != null && amount > 10) {
   <span class="warning">Don't you think this is too much?</span>

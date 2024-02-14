@@ -11,13 +11,14 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
   imports: [CurrencyPipe, CoffeeOverviewComponent],
   template: `
     <div class="overview">
-      @for (coffee of coffeeTypes; track coffee) {
+      @for (coffee of coffeePrices; track coffee.id) {
         <mcf-coffee-overview
-          [amount]="orderedCoffees.get(coffee)"
-          (amountChange)="orderCoffee($event, coffee)"
+          [amount]="orderedCoffees.get(coffee.id)"
+          [price]="coffee.price"
+          (amountChange)="orderCoffee($event, coffee.id)"
         >
           <span class="coffee">
-            @switch (coffee) {
+            @switch (coffee.id) {
               @case ('espresso') {
                 Espresso
               }
@@ -29,7 +30,6 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
               }
             }
           </span>
-          <span>Price: {{ getPrice(coffee) }}</span>
         </mcf-coffee-overview>
       }
     </div>
@@ -52,10 +52,9 @@ import { CoffeeOverviewComponent } from './pick-coffee/coffee-overview/coffee-ov
   `,
 })
 export class AppComponent {
-  protected coffeeTypes: CoffeeType[] = ['espresso', 'doppio', 'cappuccino'];
   protected orderedCoffees = new Map<CoffeeType, number>();
 
-  private readonly coffeePrices: Coffee[] = [
+  protected readonly coffeePrices: Coffee[] = [
     { id: 'espresso', price: 1.25 },
     { id: 'doppio', price: 1.75 },
     { id: 'cappuccino', price: 2.25 },
@@ -63,17 +62,6 @@ export class AppComponent {
 
   protected orderCoffee(amount: number, id: CoffeeType): void {
     this.orderedCoffees.set(id, amount);
-  }
-
-  protected getPrice(id: CoffeeType): number {
-    const price = this.coffeePrices.find(x => x.id === id)?.price;
-    const amount = this.orderedCoffees.get(id);
-
-    if (price == null || amount == null) {
-      return 0;
-    }
-
-    return price * amount;
   }
 
   protected getTotalPrice(): number {
