@@ -45,6 +45,7 @@
 - Custom pipe
   - npm ng generate pipe totalPrice
 - Common pipes
+  - use decimal pipe to all prices
 
 ## Forms
 

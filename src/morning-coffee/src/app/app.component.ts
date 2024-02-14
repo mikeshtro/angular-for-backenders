@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { CoffeeType } from './coffee-type';
@@ -8,14 +9,16 @@ import { TotalPricePipe } from './total-price.pipe';
 @Component({
   selector: 'mcf-root',
   standalone: true,
-  imports: [CoffeeListComponent, TotalPricePipe],
+  imports: [CoffeeListComponent, TotalPricePipe, DecimalPipe],
   template: `
     <mcf-coffee-list
       [orderedCoffees]="orderedCoffees"
       [coffeePrices]="coffeePrices"
       (orderedCoffeesChange)="setOrderedCoffees($event)"
     />
-    <div class="total">Total price: {{ orderedCoffees | totalPrice: coffeePrices }}</div>
+    <div class="total">
+      Total price: {{ orderedCoffees | totalPrice: coffeePrices | number: '1.2' }}
+    </div>
   `,
   styles: `
     .total {

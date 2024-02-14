@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
@@ -5,7 +6,7 @@ import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
 @Component({
   selector: 'mcf-coffee-overview',
   standalone: true,
-  imports: [CoffeeInputComponent],
+  imports: [CoffeeInputComponent, DecimalPipe],
   templateUrl: './coffee-overview.component.html',
   styleUrl: './coffee-overview.component.css',
 })
