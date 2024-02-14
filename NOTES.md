@@ -34,6 +34,7 @@
   - add inputs and outputs to coffee-input
   - add one-way data binding
   - change one-way data binding to two way data binding
+  - npm ng generate component pick-coffee/coffee-list
 - Avoiding methods in templates
   - create method calls from template
 
