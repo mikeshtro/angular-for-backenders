@@ -1,17 +1,21 @@
-import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { CoffeeType } from './coffee-type';
 import { Coffee } from './cofffee';
 import { CoffeeListComponent } from './pick-coffee/coffee-list/coffee-list.component';
+import { TotalPricePipe } from './total-price.pipe';
 
 @Component({
   selector: 'mcf-root',
   standalone: true,
-  imports: [CoffeeListComponent],
+  imports: [CoffeeListComponent, TotalPricePipe],
   template: `
-    <mcf-coffee-list [(orderedCoffees)]="orderedCoffees" [coffeePrices]="coffeePrices" />
-    <div class="total">Total price: {{ getTotalPrice() }}</div>
+    <mcf-coffee-list
+      [orderedCoffees]="orderedCoffees"
+      [coffeePrices]="coffeePrices"
+      (orderedCoffeesChange)="setOrderedCoffees($event)"
+    />
+    <div class="total">Total price: {{ orderedCoffees | totalPrice: coffeePrices }}</div>
   `,
   styles: `
     .total {
@@ -29,14 +33,7 @@ export class AppComponent {
     { id: 'cappuccino', price: 2.25 },
   ];
 
-  protected getTotalPrice(): number {
-    let totalPrice = 0;
-
-    for (const price of this.coffeePrices) {
-      const amount = this.orderedCoffees.get(price.id) ?? 0;
-      totalPrice += amount * price.price;
-    }
-
-    return totalPrice;
+  protected setOrderedCoffees(coffees: Map<CoffeeType, number>): void {
+    this.orderedCoffees = new Map(coffees);
   }
 }

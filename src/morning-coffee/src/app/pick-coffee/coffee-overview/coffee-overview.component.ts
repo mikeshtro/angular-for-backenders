@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
 
@@ -9,21 +9,19 @@ import { CoffeeInputComponent } from '../coffee-input/coffee-input.component';
   templateUrl: './coffee-overview.component.html',
   styleUrl: './coffee-overview.component.css',
 })
-export class CoffeeOverviewComponent {
+export class CoffeeOverviewComponent implements OnChanges {
   @Input({ required: true }) amount: number | null | undefined;
   @Input({ required: true }) price: number | null | undefined;
 
   @Output() amountChange = new EventEmitter<number>();
 
-  protected orderCoffee(value: number): void {
-    this.amountChange.emit(value);
+  protected computedPrice = 0;
+
+  ngOnChanges(): void {
+    this.computedPrice = (this.price ?? 0) * (this.amount ?? 0);
   }
 
-  protected getPrice(): number {
-    if (this.price == null || this.amount == null) {
-      return 0;
-    }
-
-    return this.price * this.amount;
+  protected orderCoffee(value: number): void {
+    this.amountChange.emit(value);
   }
 }

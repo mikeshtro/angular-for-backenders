@@ -37,11 +37,14 @@
   - npm ng generate component pick-coffee/coffee-list
 - Avoiding methods in templates
   - create method calls from template
+  - refactor inside pick-coffee/coffee-input using setters/getters
+  - refactor inside pick-coffee/coffee-input using ngOnChanges
 
 ## Pipes
 
-- Common pipes
 - Custom pipe
+  - npm ng generate pipe totalPrice
+- Common pipes
 
 ## Forms
 
