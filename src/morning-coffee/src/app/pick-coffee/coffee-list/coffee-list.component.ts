@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { Coffee } from '../../coffee';
 import { CoffeeType } from '../../coffee-type';
-import { Coffee } from '../../cofffee';
 import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.component';
 
 @Component({

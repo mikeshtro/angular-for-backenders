@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+import { Coffee } from './coffee';
 import { CoffeeType } from './coffee-type';
-import { Coffee } from './cofffee';
 
 @Pipe({
   name: 'totalPrice',

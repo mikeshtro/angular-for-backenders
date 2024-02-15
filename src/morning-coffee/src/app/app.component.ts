@@ -1,8 +1,8 @@
 import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { Coffee } from './coffee';
 import { CoffeeType } from './coffee-type';
-import { Coffee } from './cofffee';
 import { CoffeeListComponent } from './pick-coffee/coffee-list/coffee-list.component';
 import { TotalPricePipe } from './total-price.pipe';
 
