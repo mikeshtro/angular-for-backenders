@@ -63,9 +63,12 @@
 
 ### Reactive forms
 
-- One field form
-- Multiple filed form and submit
-- Validation
+- Multiple field form and submit
+  - npm ng generate component registration/registration-form
+  - add simple registration form
+  - add validations
+  - add validation messages
+  - add optional favorite
 
 ## Dependency injection
 

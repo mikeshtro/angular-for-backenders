@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="confirm()">
+  <div class="form-field">
+    <label for="username">Username</label>
+    <input id="username" type="text" formControlName="username" />
+  </div>
+  @if (form.controls.username.dirty && form.controls.username.invalid) {
+    <div class="error">Username is required</div>
+  }
+
+  <div class="form-field">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  @if (
+    form.controls.password.dirty &&
+    form.controls.password.invalid &&
+    form.controls.password.errors?.['required']
+  ) {
+    <div class="error">Password is required</div>
+  }
+  @if (
+    form.controls.password.dirty &&
+    form.controls.password.invalid &&
+    form.controls.password.errors?.['minLength']
+  ) {
+    <div class="error">Password must have at least 6 characters</div>
+  }
+
+  <div class="form-field">
+    <label for="coffeesPerDay">Coffees per day</label>
+    <input id="coffeesPerDay" type="number" formControlName="coffeesPerDay" />
+  </div>
+
+  <div class="form-field">
+    <label for="favorite">Do you have a favorite?</label>
+    <input id="favorite" type="checkbox" formControlName="haveFavorite" />
+  </div>
+
+  <div class="form-field">
+    <label for="favoriteCoffee">Your favorite</label>
+    <select id="favoriteCoffee" formControlName="favoriteCoffee">
+      @for (coffeeType of coffeeTypes; track coffeeType) {
+        <option [ngValue]="coffeeType">
+          @switch (coffeeType) {
+            @case ('espresso') {
+              Espresso
+            }
+            @case ('doppio') {
+              Doppio
+            }
+            @case ('cappuccino') {
+              Cappuccino
+            }
+          }
+        </option>
+      }
+    </select>
+  </div>
+  @if (form.controls.favoriteCoffee.invalid) {
+    <div class="error">Coffee type is required</div>
+  }
+
+  <div class="buttons">
+    <button type="button" (click)="form.reset()">Clean</button>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>
