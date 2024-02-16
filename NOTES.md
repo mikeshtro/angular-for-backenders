@@ -54,6 +54,8 @@
 - One field form
   - add one field input to coffee-input component with validation
 - Multiple field form and submit
+  - npm ng generate component order-coffee/order-overview
+  - create shared directory and move files
 
 ### Reactive forms
 
