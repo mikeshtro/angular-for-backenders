@@ -1,3 +1,79 @@
 <div class="total">
   Total price: {{ orderedCoffees | totalPrice: coffeePrices | number: '1.2' }}
 </div>
+<form #customerForm="ngForm" (ngSubmit)="confirm()">
+  <div class="form-field">
+    <label for="firstName">First name</label>
+    <input
+      #firstName="ngModel"
+      id="fistName"
+      type="text"
+      name="firstName"
+      [(ngModel)]="customer.firstName"
+      required
+    />
+  </div>
+  @if (firstName.dirty && firstName.invalid) {
+    <div class="error">First name is required</div>
+  }
+
+  <div class="form-field">
+    <label for="lastName">Last name</label>
+    <input
+      #lastName="ngModel"
+      id="lastName"
+      type="text"
+      name="lastName"
+      [(ngModel)]="customer.lastName"
+      required
+    />
+  </div>
+  @if (lastName.dirty && lastName.invalid) {
+    <div class="error">Last name is required</div>
+  }
+
+  <div class="form-field">
+    <label for="country">Country</label>
+    <select id="country" name="country" [(ngModel)]="customer.country">
+      @for (country of countries; track country.code) {
+        <option [ngValue]="country.code">{{ country.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="notifications">Send notifications</label>
+    <input
+      id="notifications"
+      type="checkbox"
+      name="notifications"
+      [ngModel]="customer.sendNotifications"
+      (ngModelChange)="setSendNotifications($event)"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input
+      #email="ngModel"
+      id="email"
+      type="email"
+      name="email"
+      [(ngModel)]="customer.email"
+      [disabled]="!customer.sendNotifications"
+      email
+      required
+    />
+  </div>
+  @if (email.dirty && email.invalid && email.errors?.['required']) {
+    <div class="error">Email name is required</div>
+  }
+  @if (email.dirty && email.invalid && email.errors?.['email']) {
+    <div class="error">This is not an email</div>
+  }
+
+  <div class="buttons">
+    <button type="button" (click)="customerForm.reset()">Clean</button>
+    <button type="submit" [disabled]="customerForm.invalid">Submit</button>
+  </div>
+</form>

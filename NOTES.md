@@ -56,6 +56,10 @@
 - Multiple field form and submit
   - npm ng generate component order-coffee/order-overview
   - create shared directory and move files
+  - add simple order overview form
+  - add validations
+  - add validation messages
+  - add optional email
 
 ### Reactive forms
 
