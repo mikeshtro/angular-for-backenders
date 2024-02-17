@@ -72,14 +72,22 @@
 
 ## Dependency injection
 
-### Singleton services
+### Http and singleton services
 
-- Creating singleton service
-- Injecting using inject function
-- Injection using constructor
+- Setup http
+  - provideHttpClient
+  - npm ng generate service core/coffee
+  - inject HttpClient using c# constructor, primary constructor, inject function
+- What is an observable (pipeline)
+- Get data and manually subscribe
+  - manually subscribe with unsubscribe
+  - manually subscribe with takeUntil
+  - manually subscribe with takeUntilDestroyed
+- Get data with async pipe
 
 ### State management
 
+- Creating singleton service
 - State management using singleton service
 - How to use state management
 - Component provider and local state management
@@ -91,21 +99,10 @@
 - Setup routing
 - Routing between two components
 
-## HTTP communication
-
-### Simple http communication
-
-- Setup http
-- Get data and manually subscribe
-- Post data and manually subscribe
-
 ## Data transformation and reactivity
 
 ### RxJs
 
-- What is an observable (pipeline)
-- Manual subscription unsubscribing
-- Async pipe
 - Transforming data
 - Combining observables
 

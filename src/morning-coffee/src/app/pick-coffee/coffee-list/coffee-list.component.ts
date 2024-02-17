@@ -12,13 +12,13 @@ import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.comp
   styleUrl: './coffee-list.component.css',
 })
 export class CoffeeListComponent {
-  @Input({ required: true }) orderedCoffees!: Map<CoffeeType, number>;
-  @Input({ required: true }) coffeePrices!: Coffee[];
+  @Input() orderedCoffees: Map<CoffeeType, number> | undefined;
+  @Input() coffeePrices: Coffee[] | undefined;
 
   @Output() readonly orderedCoffeesChange = new EventEmitter<Map<CoffeeType, number>>();
 
   protected orderCoffee(amount: number, id: CoffeeType): void {
-    this.orderedCoffees.set(id, amount);
+    this.orderedCoffees?.set(id, amount);
     this.orderedCoffeesChange.emit(this.orderedCoffees);
   }
 }

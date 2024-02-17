@@ -1,6 +1,6 @@
 @for (coffee of coffeePrices; track coffee.id) {
   <mcf-coffee-overview
-    [amount]="orderedCoffees.get(coffee.id)"
+    [amount]="orderedCoffees?.get(coffee.id)"
     [price]="coffee.price"
     (amountChange)="orderCoffee($event, coffee.id)"
   >
