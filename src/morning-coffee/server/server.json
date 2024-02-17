@@ -1,0 +1,16 @@
+{
+  "coffee-prices": [
+    {
+      "id": "espresso",
+      "price": 50
+    },
+    {
+      "id": "doppio",
+      "price": "75"
+    },
+    {
+      "id": "cappuccino",
+      "price": 66
+    }
+  ]
+}

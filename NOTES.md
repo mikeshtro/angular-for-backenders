@@ -74,6 +74,10 @@
 
 ### Http and singleton services
 
+- Setup server
+  - npm i -D json-server
+  - create server.json
+  - update npm scripts
 - Setup http
   - provideHttpClient
   - npm ng generate service core/coffee
