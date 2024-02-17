@@ -1,4 +1,4 @@
-import { AsyncPipe, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Component, inject, Input, ViewChild } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { Customer } from './customer';
 @Component({
   selector: 'mcf-order-overview',
   standalone: true,
-  imports: [AsyncPipe, DecimalPipe, FormsModule, TotalPricePipe],
+  imports: [DecimalPipe, FormsModule, TotalPricePipe],
   templateUrl: './order-overview.component.html',
   styleUrl: './order-overview.component.css',
 })
@@ -19,7 +19,7 @@ export class OrderOverviewComponent {
 
   private readonly coffeeStoreService = inject(CoffeeStoreService);
 
-  protected orderedCoffees$ = this.coffeeStoreService.orderedCoffees$;
+  protected orderedCoffees = this.coffeeStoreService.orderedCoffees;
 
   @ViewChild('email', { read: NgModel }) private emailModel!: NgModel;
 

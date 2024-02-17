@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 
 import { CoffeeStoreService } from '../../core/coffee-store.service';
@@ -9,7 +8,7 @@ import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.comp
 @Component({
   selector: 'mcf-coffee-list',
   standalone: true,
-  imports: [AsyncPipe, CoffeeOverviewComponent],
+  imports: [CoffeeOverviewComponent],
   templateUrl: './coffee-list.component.html',
   styleUrl: './coffee-list.component.css',
 })
@@ -18,7 +17,7 @@ export class CoffeeListComponent {
 
   private readonly coffeeStoreService = inject(CoffeeStoreService);
 
-  protected orderedCoffees$ = this.coffeeStoreService.orderedCoffees$;
+  protected orderedCoffees = this.coffeeStoreService.orderedCoffees;
 
   protected orderCoffee(amount: number, id: CoffeeType): void {
     this.coffeeStoreService.setOrderedCoffees(amount, id);

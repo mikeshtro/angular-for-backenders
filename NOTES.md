@@ -94,6 +94,7 @@
 - Creating singleton service
   - npm run ng generate service core/coffee-store
   - save orderedCoffees using subject
+  - save orderedCoffees using signal
 - State management using singleton service
 - How to use state management
 - Component provider and local state management
