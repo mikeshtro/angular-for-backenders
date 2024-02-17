@@ -1,22 +1,25 @@
-import { DecimalPipe } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 
+import { CoffeeStoreService } from '../../core/coffee-store.service';
 import { Coffee } from '../../shared/coffee';
-import { CoffeeType } from '../../shared/coffee-type';
 import { TotalPricePipe } from '../total-price.pipe';
 import { Customer } from './customer';
 
 @Component({
   selector: 'mcf-order-overview',
   standalone: true,
-  imports: [DecimalPipe, FormsModule, TotalPricePipe],
+  imports: [AsyncPipe, DecimalPipe, FormsModule, TotalPricePipe],
   templateUrl: './order-overview.component.html',
   styleUrl: './order-overview.component.css',
 })
 export class OrderOverviewComponent {
-  @Input() orderedCoffees: Map<CoffeeType, number> | undefined;
   @Input() coffeePrices: Coffee[] | undefined;
+
+  private readonly coffeeStoreService = inject(CoffeeStoreService);
+
+  protected orderedCoffees$ = this.coffeeStoreService.orderedCoffees$;
 
   @ViewChild('email', { read: NgModel }) private emailModel!: NgModel;
 

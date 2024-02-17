@@ -1,21 +1,23 @@
-@for (coffee of coffeePrices; track coffee.id) {
-  <mcf-coffee-overview
-    [amount]="orderedCoffees?.get(coffee.id)"
-    [price]="coffee.price"
-    (amountChange)="orderCoffee($event, coffee.id)"
-  >
-    <span class="coffee">
-      @switch (coffee.id) {
-        @case ('espresso') {
-          Espresso
+@if (orderedCoffees$ | async; as orderedCoffees) {
+  @for (coffee of coffeePrices; track coffee.id) {
+    <mcf-coffee-overview
+      [amount]="orderedCoffees.get(coffee.id)"
+      [price]="coffee.price"
+      (amountChange)="orderCoffee($event, coffee.id)"
+    >
+      <span class="coffee">
+        @switch (coffee.id) {
+          @case ('espresso') {
+            Espresso
+          }
+          @case ('doppio') {
+            Doppio
+          }
+          @case ('cappuccino') {
+            Cappuccino
+          }
         }
-        @case ('doppio') {
-          Doppio
-        }
-        @case ('cappuccino') {
-          Cappuccino
-        }
-      }
-    </span>
-  </mcf-coffee-overview>
+      </span>
+    </mcf-coffee-overview>
+  }
 }

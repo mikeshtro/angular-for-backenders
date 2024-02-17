@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject, Input } from '@angular/core';
 
+import { CoffeeStoreService } from '../../core/coffee-store.service';
 import { Coffee } from '../../shared/coffee';
 import { CoffeeType } from '../../shared/coffee-type';
 import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.component';
@@ -7,18 +9,18 @@ import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.comp
 @Component({
   selector: 'mcf-coffee-list',
   standalone: true,
-  imports: [CoffeeOverviewComponent],
+  imports: [AsyncPipe, CoffeeOverviewComponent],
   templateUrl: './coffee-list.component.html',
   styleUrl: './coffee-list.component.css',
 })
 export class CoffeeListComponent {
-  @Input() orderedCoffees: Map<CoffeeType, number> | undefined;
   @Input() coffeePrices: Coffee[] | undefined;
 
-  @Output() readonly orderedCoffeesChange = new EventEmitter<Map<CoffeeType, number>>();
+  private readonly coffeeStoreService = inject(CoffeeStoreService);
+
+  protected orderedCoffees$ = this.coffeeStoreService.orderedCoffees$;
 
   protected orderCoffee(amount: number, id: CoffeeType): void {
-    this.orderedCoffees?.set(id, amount);
-    this.orderedCoffeesChange.emit(this.orderedCoffees);
+    this.coffeeStoreService.setOrderedCoffees(amount, id);
   }
 }

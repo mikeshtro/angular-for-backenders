@@ -1,5 +1,5 @@
 <div class="total">
-  Total price: {{ orderedCoffees | totalPrice: coffeePrices | number: '1.2' }}
+  Total price: {{ orderedCoffees$ | async | totalPrice: coffeePrices | number: '1.2' }}
 </div>
 <form #customerForm="ngForm" (ngSubmit)="confirm()">
   <div class="form-field">

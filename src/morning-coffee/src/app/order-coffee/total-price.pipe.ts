@@ -9,7 +9,7 @@ import { CoffeeType } from '../shared/coffee-type';
 })
 export class TotalPricePipe implements PipeTransform {
   transform(
-    orderedCoffees: Map<CoffeeType, number> | undefined,
+    orderedCoffees: Map<CoffeeType, number> | null | undefined,
     coffeePrices: Coffee[] | undefined
   ): number {
     let totalPrice = 0;
