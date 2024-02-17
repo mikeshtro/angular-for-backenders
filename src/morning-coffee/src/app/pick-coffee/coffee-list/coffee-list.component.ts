@@ -1,7 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
-import { CoffeeStoreService } from '../../core/coffee-store.service';
-import { Coffee } from '../../shared/coffee';
+import { CoffeeFacadeService } from '../../core/coffee-facade.service';
 import { CoffeeType } from '../../shared/coffee-type';
 import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.component';
 
@@ -13,13 +13,12 @@ import { CoffeeOverviewComponent } from '../coffee-overview/coffee-overview.comp
   styleUrl: './coffee-list.component.css',
 })
 export class CoffeeListComponent {
-  @Input() coffeePrices: Coffee[] | undefined;
+  private readonly coffeeFacadeService = inject(CoffeeFacadeService);
 
-  private readonly coffeeStoreService = inject(CoffeeStoreService);
-
-  protected orderedCoffees = this.coffeeStoreService.orderedCoffees;
+  protected coffeePrices = toSignal(this.coffeeFacadeService.coffeePrices$);
+  protected orderedCoffees = this.coffeeFacadeService.orderedCoffees;
 
   protected orderCoffee(amount: number, id: CoffeeType): void {
-    this.coffeeStoreService.setOrderedCoffees(amount, id);
+    this.coffeeFacadeService.orderCoffee(amount, id);
   }
 }

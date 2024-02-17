@@ -1,7 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
+import { CoffeeFacadeService } from '../../core/coffee-facade.service';
 import { CoffeeType } from '../../shared/coffee-type';
 
 @Component({
@@ -12,9 +14,12 @@ import { CoffeeType } from '../../shared/coffee-type';
   styleUrl: './registration-form.component.css',
 })
 export class RegistrationFormComponent implements OnInit, OnDestroy {
-  @Input() coffeeTypes: CoffeeType[] | undefined;
-
+  private readonly coffeeFacadeService = inject(CoffeeFacadeService);
   private subscription: Subscription | undefined;
+
+  private readonly coffeePrices = toSignal(this.coffeeFacadeService.coffeePrices$);
+
+  protected readonly coffeeTypes = computed(() => this.coffeePrices()?.map(coffee => coffee.id));
 
   protected readonly form = new FormGroup({
     username: new FormControl('', { validators: [Validators.required], nonNullable: true }),

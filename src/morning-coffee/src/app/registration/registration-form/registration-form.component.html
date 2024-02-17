@@ -39,7 +39,7 @@
   <div class="form-field">
     <label for="favoriteCoffee">Your favorite</label>
     <select id="favoriteCoffee" formControlName="favoriteCoffee">
-      @for (coffeeType of coffeeTypes; track coffeeType) {
+      @for (coffeeType of coffeeTypes(); track coffeeType) {
         <option [ngValue]="coffeeType">
           @switch (coffeeType) {
             @case ('espresso') {

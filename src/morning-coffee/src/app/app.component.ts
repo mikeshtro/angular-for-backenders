@@ -1,7 +1,5 @@
-import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { CoffeeService } from './core/coffee.service';
 import { OrderOverviewComponent } from './order-coffee/order-overview/order-overview.component';
 import { CoffeeListComponent } from './pick-coffee/coffee-list/coffee-list.component';
 import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
@@ -9,15 +7,13 @@ import { RegistrationFormComponent } from './registration/registration-form/regi
 @Component({
   selector: 'mcf-root',
   standalone: true,
-  imports: [AsyncPipe, CoffeeListComponent, OrderOverviewComponent, RegistrationFormComponent],
+  imports: [CoffeeListComponent, OrderOverviewComponent, RegistrationFormComponent],
   template: `
-    @if (coffeePrices$ | async; as coffeePrices) {
-      <mcf-coffee-list [coffeePrices]="coffeePrices" />
-      <div class="forms">
-        <mcf-order-overview [coffeePrices]="coffeePrices" />
-        <mcf-registration-form [coffeeTypes]="['espresso', 'doppio', 'cappuccino']" />
-      </div>
-    }
+    <mcf-coffee-list />
+    <div class="forms">
+      <mcf-order-overview />
+      <mcf-registration-form />
+    </div>
   `,
   styles: `
     .forms {
@@ -27,8 +23,4 @@ import { RegistrationFormComponent } from './registration/registration-form/regi
     }
   `,
 })
-export class AppComponent {
-  private coffeeService = inject(CoffeeService);
-
-  protected readonly coffeePrices$ = this.coffeeService.getCoffeePrices();
-}
+export class AppComponent {}

@@ -93,9 +93,12 @@
 
 - Creating singleton service
   - npm run ng generate service core/coffee-store
+- State management using singleton service
   - save orderedCoffees using subject
   - save orderedCoffees using signal
-- State management using singleton service
+- Facades
+  - npm run ng generate service core/coffee-facade
+  - move all logic from components to facade using signals
 - How to use state management
 - Component provider and local state management
 

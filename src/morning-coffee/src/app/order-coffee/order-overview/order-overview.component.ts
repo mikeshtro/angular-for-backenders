@@ -1,9 +1,9 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, inject, Input, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule, NgModel } from '@angular/forms';
 
-import { CoffeeStoreService } from '../../core/coffee-store.service';
-import { Coffee } from '../../shared/coffee';
+import { CoffeeFacadeService } from '../../core/coffee-facade.service';
 import { TotalPricePipe } from '../total-price.pipe';
 import { Customer } from './customer';
 
@@ -15,11 +15,10 @@ import { Customer } from './customer';
   styleUrl: './order-overview.component.css',
 })
 export class OrderOverviewComponent {
-  @Input() coffeePrices: Coffee[] | undefined;
+  private readonly coffeeFacadeService = inject(CoffeeFacadeService);
 
-  private readonly coffeeStoreService = inject(CoffeeStoreService);
-
-  protected orderedCoffees = this.coffeeStoreService.orderedCoffees;
+  protected coffeePrices = toSignal(this.coffeeFacadeService.coffeePrices$);
+  protected orderedCoffees = this.coffeeFacadeService.orderedCoffees;
 
   @ViewChild('email', { read: NgModel }) private emailModel!: NgModel;
 
