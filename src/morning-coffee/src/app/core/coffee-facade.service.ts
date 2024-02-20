@@ -19,7 +19,7 @@ export class CoffeeFacadeService {
 
   readonly orderedCoffees: Signal<Map<CoffeeType, number>> = this.coffeeStoreService.orderedCoffees;
 
-  orderCoffee(amount: number, id: CoffeeType): void {
-    this.coffeeStoreService.setOrderedCoffees(amount, id);
+  confirmOrder(order: Map<CoffeeType, number>): void {
+    this.coffeeStoreService.setOrderedCoffees(order);
   }
 }

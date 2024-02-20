@@ -99,8 +99,10 @@
 - Facades
   - npm run ng generate service core/coffee-facade
   - move all logic from components to facade using signals
-- How to use state management
 - Component provider and local state management
+  - npm run ng generate service pick-coffee/coffee-list/coffee-list.state
+  - add confirm order button
+  - hold coffee-list state inside coffee-list.state service
 
 ## Routing
 

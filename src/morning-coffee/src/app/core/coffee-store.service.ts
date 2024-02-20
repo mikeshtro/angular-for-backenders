@@ -8,7 +8,7 @@ import { CoffeeType } from '../shared/coffee-type';
 export class CoffeeStoreService {
   readonly orderedCoffees = signal(new Map<CoffeeType, number>());
 
-  setOrderedCoffees(amount: number, id: CoffeeType): void {
-    this.orderedCoffees.update(orderedCoffees => new Map(orderedCoffees).set(id, amount));
+  setOrderedCoffees(orderedCoffees: Map<CoffeeType, number>): void {
+    this.orderedCoffees.set(new Map(orderedCoffees));
   }
 }
