@@ -1,26 +1,15 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
-import { OrderOverviewComponent } from './order-coffee/order-overview/order-overview.component';
-import { CoffeeListComponent } from './pick-coffee/coffee-list/coffee-list.component';
-import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
   selector: 'mcf-root',
   standalone: true,
-  imports: [CoffeeListComponent, OrderOverviewComponent, RegistrationFormComponent],
+  imports: [RouterOutlet, NavigationComponent],
   template: `
-    <mcf-coffee-list />
-    <div class="forms">
-      <mcf-order-overview />
-      <mcf-registration-form />
-    </div>
-  `,
-  styles: `
-    .forms {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+    <mcf-navigation />
+    <router-outlet />
   `,
 })
 export class AppComponent {}

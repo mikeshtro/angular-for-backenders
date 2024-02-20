@@ -109,9 +109,10 @@
 ### Simple routing
 
 - Setup routing
-- Routing between two components
+  - npm run ng generate component navigation
+  - add routes and links
 
-## Data transformation and reactivity
+## Final recommendations
 
 ### RxJs
 
@@ -124,8 +125,6 @@
 - How it compares to Observable
 - Transforming data
 - RxJs interactions
-
-## Final recommendations
 
 ### Devtools
 

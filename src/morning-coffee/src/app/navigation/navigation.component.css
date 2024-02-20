@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.link.active-link {
+  color: blue;
+}
